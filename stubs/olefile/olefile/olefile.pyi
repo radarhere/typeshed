@@ -173,7 +173,7 @@ class OleDirectoryEntry:
     def getmtime(self) -> datetime.datetime | None: ...
     def getctime(self) -> datetime.datetime | None: ...
 
-_Property: TypeAlias = int | AnyStr | bool | None
+_Property: TypeAlias = int | str | bytes | bool | None
 
 class OleFileIO:
     root: OleDirectoryEntry | None
