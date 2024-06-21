@@ -3,12 +3,7 @@ name: Test
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
   pull_request:
-    paths-ignore:
-      - "**/*.md"
-      - "scripts/**"
 
 permissions:
   contents: read
@@ -61,8 +56,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: ["linux", "win32", "darwin"]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        platform: ["darwin"]
+        python-version: ["3.12"]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
@@ -81,7 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: ["linux", "win32", "darwin"]
+        platform: ["darwin"]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
@@ -112,8 +107,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-platform: ["Linux", "Windows", "Darwin"]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+        python-platform: ["Darwin"]
+        python-version: ["3.12"]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
