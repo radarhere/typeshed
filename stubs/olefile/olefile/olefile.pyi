@@ -4,7 +4,7 @@ import io
 import logging
 import traceback
 from collections.abc import Sequence
-from typing import IO, AnyStr
+from typing import Generic, IO, AnyStr
 from typing_extensions import Self, TypeAlias
 
 __date__: str
@@ -122,7 +122,7 @@ DEFECT_INCORRECT: int
 DEFECT_FATAL: int
 MINIMAL_OLEFILE_SIZE: int
 
-def isOleFile(filename: IO[bytes] | AnyStr | None = None, data: bytes | None = None) -> bool: ...
+def isOleFile(filename: IO[bytes] | bytes | str | None = None, data: bytes | None = None) -> bool: ...
 def i8(c: bytes | int) -> int: ...
 def i16(c: bytes, o: int = 0) -> int: ...
 def i32(c: bytes, o: int = 0) -> int: ...
@@ -175,7 +175,7 @@ class OleDirectoryEntry:
 
 _Property: TypeAlias = int | str | bytes | bool | None
 
-class OleFileIO:
+class OleFileIO(Generic[AnyStr]):
     root: OleDirectoryEntry | None
 
     def __init__(
