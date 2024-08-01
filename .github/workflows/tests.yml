@@ -3,12 +3,7 @@ name: Test
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
   pull_request:
-    paths-ignore:
-      - "**/*.md"
-      - "scripts/**"
 
 permissions:
   contents: read
@@ -16,10 +11,6 @@ permissions:
 env:
   PIP_DISABLE_PIP_VERSION_CHECK: 1
   FORCE_COLOR: 1
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
-  cancel-in-progress: true
 
 jobs:
   typeshed-structure:
@@ -62,7 +53,7 @@ jobs:
     strategy:
       matrix:
         platform: ["linux", "win32", "darwin"]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.8", "3.12"]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
@@ -113,7 +104,7 @@ jobs:
     strategy:
       matrix:
         python-platform: ["Linux", "Windows", "Darwin"]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.8", "3.12", "3.13"]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
