@@ -1,7 +1,6 @@
 from typing import type_check_only
 
 def path() -> str: ...
-
 @type_check_only
 class _Writer(Protocol):
     def isatty(self) -> bool: ...
