@@ -1,5 +1,7 @@
 from collections.abc import Callable
 
+from .import_hook import instrument_imports
+
 def Setup(
     args: list[str],
     test_one_input: Callable[[bytes], None],
